@@ -1,7 +1,11 @@
 import Controller
 
-try:
-    Controller.start()
+if __name__ == '__main__':
 
-except FileNotFoundError:
-    print("File not found!")
+    try:
+        ctrller = Controller.Controller()
+        ctrller.start()
+
+    except FileNotFoundError:
+        print("File not found!")
+

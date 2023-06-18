@@ -3,11 +3,29 @@ class GloveStorage:
     def __init__(self):
         self.container = []
 
-    def add(self, glove):
-        self.container.append(glove)
+    def add(self, gloves):
+        self.container.extend(gloves)
 
-    # def add_all(self, list):
-    #     self.container.append(list)
+
+    def __iter__(self):
+        self.n = 0
+        return self
+
+    def __next__(self):
+        if self.n < len(self.container):
+            result = self.container[self.n]
+            self.n += 1
+            return result
+        else:
+            raise StopIteration
+
+    def __str__(self):
+        storage_str = "GloveStorage ["
+        for glove in self.container:
+            storage_str += glove.__str__() + ", "
+        storage_str = storage_str.rstrip(", ")
+        storage_str += "]"
+        return storage_str
 
     def sort_by_quantity(self):
 
