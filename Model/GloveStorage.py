@@ -6,7 +6,6 @@ class GloveStorage:
     def add(self, gloves):
         self.container.extend(gloves)
 
-
     def __iter__(self):
         self.n = 0
         return self
@@ -29,44 +28,29 @@ class GloveStorage:
 
     def sort_by_quantity(self):
 
-        def merge_sort(container):
-            if len(container) <= 1:
-                return container
+        A = self.container
+        A.sort(key=lambda x: x.get_quantity(), reverse=True)
 
-            mid = len(container) // 2
-            left = container[:mid]
-            right = container[mid:]
+    # return merge_sort(A)
 
-            left = merge_sort(left)
-            right = merge_sort(right)
 
-            return merge(left, right)
+def merge_sort(A, a=0, b=None):
+    if b is None: b = len(A)
+    if 1 < b - a:
+        c = (a + b + 1) // 2
+        merge_sort(A, a, c)
+        merge_sort(A, c, b)
 
-        def merge(left, right):
-            result = []
-            i = 0
-            j = 0
+        L, R = A[a:c], A[c:b]
+        merge(L, R, A, len(L), len(R), a, b)
 
-            while i < len(left) and j < len(right):
-                if left[i].get_quantity() <= right[j].get_quantity():
-                    result.append(left[i])
-                    i += 1
-                else:
-                    result.append(right[j])
-                    j += 1
 
-            while i < len(left):
-                result.append(left[i])
-                i += 1
-
-            while j < len(right):
-                result.append(right[j])
-                j += 1
-
-            return result
-
-        return merge_sort(self.container)
-
-    def Print(self):
-        for x in self.container:
-            print(x)
+def merge(L, R, A, i, j, a, b):
+    if a < b:
+        if (j <= 0) or (i > 0 and L[i - 1] > R[j - 1]):
+            A[b - 1] = L[i - 1]
+            i = i - 1
+        else:
+            A[b - 1] = R[j - 1]
+            j = j - 1
+            merge(L, R, A, i, j, a, b - 1)

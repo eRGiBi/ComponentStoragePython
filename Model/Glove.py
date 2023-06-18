@@ -8,6 +8,5 @@ class Glove(Equipment):
         self.size = size
 
     def __str__(self):
-        # return "Glove {Security Level: " + str(self.sec_lvl) + ", Quantity: " + str(self.quantity) + \
-        #     ", Size:" + str(self.size) + '}'
-        return f"Glove {{Security Level: {self.get_sec_lvl()}, Quantity: {self.get_quantity()}, Size: {self.size}}}"
+        return "Glove {Security Level: " + str(self.sec_lvl) + ", Quantity: " + str(self.quantity) + \
+            ", Size:" + str(self.size) + '}'

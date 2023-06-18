@@ -6,9 +6,6 @@ class Loader:
         self.container = []
 
     def load(self, file_name, parser):
-
-        line = ''
-
         try:
             for line in open(file_name, 'r'):
 
@@ -16,9 +13,6 @@ class Loader:
 
                 if parsed_line:
                     self.container.append(parsed_line)
-
-            for i in range(len(self.container) - 1):
-                print(self.container[i])
 
             return self.container
 

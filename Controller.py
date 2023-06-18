@@ -17,4 +17,8 @@ class Controller:
         loader = Loader()
         gst.add(loader.load(Controller.file_name, parser))
 
-        print(gst.__str__())
+        print(gst)
+
+        gst.sort_by_quantity()
+
+        print(gst)

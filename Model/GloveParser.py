@@ -14,8 +14,6 @@ class GloveParser():
         if data[0] == "Glove":
             self.c_st.append(data[4] + ' ' + data[5])
 
-            n_g = Glove(int(data[1]), int(data[2]), data[3])
-            print(n_g)
-            return n_g
+            return Glove(int(data[1]), int(data[2]), data[3])
         else:
             return None

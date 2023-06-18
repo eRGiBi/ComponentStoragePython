@@ -10,5 +10,3 @@ class Equipment:
     def get_quantity(self):
         return self.quantity
 
-    def __str__(self):
-        pass
